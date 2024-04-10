@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Radio Stream</title>
+    <script src="https://cdn.jsdelivr.net/npm/@microsoft/signalr@latest"></script>
+</head>
+<body>
+    <h1>Radio Stream</h1>
+    <script>
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/radioHub")
+            .build();
+
+        async function start() {
+            try {
+                await connection.start();
+                console.log("SignalR Connected.");
+            } catch (err) {
+                console.error(err);
+                setTimeout(start, 5000);
+            }
+        }
+
+        connection.onclose(async () => {
+            await start();
+        });
+
+        // Start the connection.
+        start();
+    </script>
+</body>
+</html>

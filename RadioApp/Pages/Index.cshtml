@@ -1,0 +1,27 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <button id="joinRoomBtn">Join Room</button>
+    <button id="leaveRoomBtn">Leave Room</button>
+
+    <!-- Пример элемента управления радио -->
+    <audio id="audioPlayer" controls>
+        <source src="" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <button id="playAudioBtn">Play Audio</button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/hub/radiohub"></script>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/site.js" ></script>
