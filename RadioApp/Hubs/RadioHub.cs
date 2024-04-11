@@ -8,24 +8,50 @@ namespace RadioApp.Hubs
     public class RadioHub:Hub
     {
 
+        //private readonly string _audioFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot/audio/music.mp3");
+
+        //public async Task SendAudioToClients()
+        //{
+        //    Console.WriteLine($"ооооооооооооооооооооооооооо");
+        //    var audioData = File.ReadAllBytes(_audioFilePath);
+        //    await Clients.Group("MusicRoom").SendAsync("PlayAudio", Convert.ToBase64String(audioData));
+        //}
+
+        //public async Task JoinRoom(string roomId)
+        //{
+        //    await Groups.AddToGroupAsync(Context.ConnectionId, roomId);
+        //    Console.WriteLine(roomId);
+        //    // Отправка аудиофайла клиенту при подключении к комнате
+        //    var audioFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot/audio/music.mp3");
+        //    if (File.Exists(audioFilePath))
+        //    {
+        //        var audioData = File.ReadAllBytes(audioFilePath);
+        //        await Clients.Caller.SendAsync("PlayAudio", Convert.ToBase64String(audioData));
+        //    }
+        //}
+
+        //public async Task LeaveRoom(string roomId)
+        //{
+        //    await Groups.RemoveFromGroupAsync(Context.ConnectionId, roomId);
+        //}
+
         private readonly string _audioFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot/audio/music.mp3");
 
         public async Task JoinRoom(string roomId)
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, roomId);
             Console.WriteLine(roomId);
-            // Отправка аудиофайла клиенту при подключении к комнате
-            var audioFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot/audio/music.mp3");
-            if (File.Exists(audioFilePath))
-            {
-                var audioData = File.ReadAllBytes(audioFilePath);
-                await Clients.Caller.SendAsync("PlayAudio", Convert.ToBase64String(audioData));
-            }
         }
 
         public async Task LeaveRoom(string roomId)
         {
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, roomId);
+        }
+
+        public async Task StreamAudio(string roomId)
+        {
+            await Groups.AddToGroupAsync(Context.ConnectionId, roomId);
+            await Clients.Group(roomId).SendAsync("ReceiveAudioStream", _audioFilePath);
         }
     }
 }

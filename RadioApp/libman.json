@@ -4,11 +4,7 @@
   "libraries": [
     {
       "library": "@microsoft/signalr@8.0.0",
-      "destination": "wwwroot/js/signalr/",
-      "files": [
-        "dist/browser/signalr.js",
-        "dist/browser/signalr.min.js"
-      ]
+      "destination": "wwwroot/js/signalr/"
     }
   ]
 }
