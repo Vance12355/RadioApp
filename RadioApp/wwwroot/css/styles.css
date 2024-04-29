@@ -1,0 +1,70 @@
+﻿#chatDiv {
+    display: none;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+#messagesList {
+    max-height: 400px; /* Максимальная высота чата */
+    overflow-y: auto; /* Включение вертикальной прокрутки */
+}
+
+.participant{
+    margin: 5px
+}
+
+.message {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex; /* Используем flexbox */
+    align-items: center; /* Выравниваем элементы по вертикали */
+}
+
+.separator::after {
+    content: " ► ";
+    color: #777777;
+}
+
+.sender {
+    font-weight: bold;
+    color: #007bff;
+    margin-right: 5px;
+}
+
+.content {
+    color: #000000;
+}
+
+#messageInput {
+    margin-left: 5px;
+    width: calc(100% - 70px);
+    margin-right: 10px;
+}
+
+
+.deleteButton {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.kickButton {
+    background-color: #ffc107;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+

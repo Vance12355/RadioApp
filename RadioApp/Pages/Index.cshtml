@@ -1,28 +1,33 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Чатик";
 }
 
 
-<div class="text-center">
+
+<div class="container text-center" id="welcome">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-
-    <button id="joinRoomBtn">Join Room</button>
-    <button id="leaveRoomBtn">Leave Room</button>
-
-    <!-- Пример элемента управления радио -->
-    <audio id="audioPlayer" controls>
-        <source src="" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
-    <button id="playAudioBtn">Play Audio</button>
+    <p>Введите ваше имя для входа в чат:</p>
+    <input type="text" id="userInput" class="form-control mb-3">
+    <button class="button" onclick="startChat()">Войти</button>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="/hub/radiohub"></script>
-<source src="" type="audio/mp3">
-<script src="~/js/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/site.js" ></script>
+
+<div class="container">
+    <div id="chatDiv" style="display: none;">
+        <h1 class="display-4">Чатик</h1>
+        <ul class="messagesList" id="messagesList"></ul>
+        <div class="d-flex">
+            <input type="text" id="messageInput" class="form-control">
+            <button class="button ml-2" onclick="sendMessage()">Отправить</button>
+        </div>
+    </div>
+
+    <div id="participantsPanel" class="mt-3" style="display: none;">
+        <h4>Список участников</h4>
+        <ul id="participantsList"></ul>
+    </div>
+</div>
+
+
